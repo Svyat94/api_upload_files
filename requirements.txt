@@ -8,6 +8,7 @@ django-extra-fields
 python-dotenv
 psycopg2-binary
 pep8
+pytest
 pylint
 pycodestyle
 flake8
