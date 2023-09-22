@@ -13,10 +13,8 @@ def upload_file(request):
     if request.method == 'POST':
         file_serializer = FileSerializer(data=request.data)
         if file_serializer.is_valid():
-            # Сохраняем пользователя, который загрузил файл
             file_serializer.save(user=request.user)
             file_id = file_serializer.data['id']
-            # Запускаем Celery задачу для обработки файла
             process_file.delay(file_id)
             return JsonResponse(file_serializer.data, status=status.HTTP_201_CREATED)
         return JsonResponse(file_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
