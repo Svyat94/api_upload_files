@@ -10,7 +10,8 @@ services:
       - .env
 
   backend:
-    build: ../backend
+    # build: ../backend
+    image: svyat94/backend_api
     restart: always
     volumes:
       - static_value:/app/static/

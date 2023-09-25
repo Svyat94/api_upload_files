@@ -1,13 +1,19 @@
+# flake8: noqa
+import os
 from pathlib import Path
 
+from dotenv import load_dotenv
+
+load_dotenv()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'django-insecure-cg)!3das-g6jr2xvs)_3v5gnyx&%a9y&77s@a&1e+zw4tim_oa'
+SECRET_KEY = os.getenv('SECRET_KEY', default='token')
 
-DEBUG = True
+DEBUG = os.getenv('DEBUG', default=False)
 
-ALLOWED_HOSTS = ['127.0.0.1', 'backend']
+
+ALLOWED_HOSTS = ['127.0.0.1', 'backend', '158.160.14.244']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
